@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  data_ingestion:
+    build: ./data_ingestion
+    container_name: data_ingestion
+    ports:
+      - "5001:5000"
+    depends_on:
+      - redis
+
+  processing_engine:
+    build: ./processing_engine
+    container_name: processing_engine
+    ports:
+      - "5002:5000"
+    depends_on:
+      - redis
+      - data_ingestion
+
+  pipeline_monitor:
+    build: ./pipeline_monitor
+    container_name: pipeline_monitor
+    ports:
+      - "5003:5000"
+    depends_on:
+      - data_ingestion
+      - processing_engine
+      - redis
+
+  ui:
+    build: ./ui
+    container_name: ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - processing_engine
+      - pipeline_monitor
