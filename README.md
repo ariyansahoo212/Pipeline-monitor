@@ -77,12 +77,6 @@ Then open:
 
 ---
 
-## Demo Preview
-
-![UI Screenshot](screenshots/ui.png)
-
-
-
 ## Architecture Diagram
 
 ![Architecture Diagram](screenshots/diagram.jpg)
