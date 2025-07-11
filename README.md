@@ -85,7 +85,7 @@ Then open:
 
 ## Architecture Diagram
 
-![Architecture Diagram](screenshots/diagram.png)
+![Architecture Diagram](screenshots/diagram.jpg)
 
 
 
